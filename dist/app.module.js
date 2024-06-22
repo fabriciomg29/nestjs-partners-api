@@ -11,12 +11,14 @@ const common_1 = require("@nestjs/common");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const events_module_1 = require("./events/events.module");
+const prisma_module_1 = require("./prisma/prisma.module");
+const spots_module_1 = require("./spots/spots.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [events_module_1.EventsModule],
+        imports: [events_module_1.EventsModule, prisma_module_1.PrismaModule, spots_module_1.SpotsModule],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
     })

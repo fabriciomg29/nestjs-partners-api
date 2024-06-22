@@ -28,13 +28,13 @@ let EventsController = class EventsController {
         return this.eventsService.findAll();
     }
     findOne(id) {
-        return this.eventsService.findOne(+id);
+        return this.eventsService.findOne(id);
     }
     update(id, updateEventDto) {
-        return this.eventsService.update(+id, updateEventDto);
+        return this.eventsService.update(id, updateEventDto);
     }
     remove(id) {
-        return this.eventsService.remove(+id);
+        return this.eventsService.remove(id);
     }
 };
 exports.EventsController = EventsController;
@@ -67,6 +67,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], EventsController.prototype, "update", null);
 __decorate([
+    (0, common_1.HttpCode)(204),
     (0, common_1.Delete)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
