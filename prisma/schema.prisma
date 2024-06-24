@@ -5,20 +5,36 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
+    provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+    provider = "mysql"
+    url      = env("DATABASE_URL")
 }
 
 model Event {
-    id String @id @default(cuid())
-    name String 
+    id          String   @id @default(cuid())
+    name        String
     description String
-    date DateTime
-    price Float
-    createedAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+    date        DateTime
+    price       Float
+    createedAt  DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+    Spot        Spot[]
+}
+
+model Spot {
+    id         String     @id @default(cuid())
+    name       String
+    status     SpotStatus
+    createedAt DateTime   @default(now())
+    updatedAt  DateTime   @updatedAt
+    eventId    String
+    Event      Event      @relation(fields: [eventId], references: [id])
+}
+
+enum SpotStatus {
+    available
+    reserved
 }

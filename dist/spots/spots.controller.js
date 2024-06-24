@@ -21,60 +21,65 @@ let SpotsController = class SpotsController {
     constructor(spotsService) {
         this.spotsService = spotsService;
     }
-    create(createSpotDto) {
+    create(createSpotDto, eventId) {
         return this.spotsService.create(createSpotDto);
     }
-    findAll() {
-        return this.spotsService.findAll();
+    findAll(eventId) {
+        return this.spotsService.findAll(eventId);
     }
-    findOne(id) {
-        return this.spotsService.findOne(+id);
+    findOne(eventId, spotId) {
+        return this.spotsService.findOne(eventId, spotId);
     }
-    update(id, updateSpotDto) {
-        return this.spotsService.update(+id, updateSpotDto);
+    update(eventId, spotId, updateSpotDto) {
+        return this.spotsService.update(eventId, spotId, updateSpotDto);
     }
-    remove(id) {
-        return this.spotsService.remove(+id);
+    remove(eventId, spotId) {
+        return this.spotsService.remove(eventId, spotId);
     }
 };
 exports.SpotsController = SpotsController;
 __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
+    __param(1, (0, common_1.Param)('eventId')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_spot_dto_1.CreateSpotDto]),
+    __metadata("design:paramtypes", [create_spot_dto_1.CreateSpotDto, String]),
     __metadata("design:returntype", void 0)
 ], SpotsController.prototype, "create", null);
 __decorate([
     (0, common_1.Get)(),
+    __param(0, (0, common_1.Param)('eventId')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], SpotsController.prototype, "findAll", null);
 __decorate([
-    (0, common_1.Get)(':id'),
-    __param(0, (0, common_1.Param)('id')),
+    (0, common_1.Get)(':spotId'),
+    __param(0, (0, common_1.Param)('eventId')),
+    __param(1, (0, common_1.Param)('spotId')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [String, String]),
     __metadata("design:returntype", void 0)
 ], SpotsController.prototype, "findOne", null);
 __decorate([
-    (0, common_1.Patch)(':id'),
-    __param(0, (0, common_1.Param)('id')),
-    __param(1, (0, common_1.Body)()),
+    (0, common_1.Patch)(':spotId'),
+    __param(0, (0, common_1.Param)('eventId')),
+    __param(1, (0, common_1.Param)('id')),
+    __param(2, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, update_spot_dto_1.UpdateSpotDto]),
+    __metadata("design:paramtypes", [String, String, update_spot_dto_1.UpdateSpotDto]),
     __metadata("design:returntype", void 0)
 ], SpotsController.prototype, "update", null);
 __decorate([
-    (0, common_1.Delete)(':id'),
-    __param(0, (0, common_1.Param)('id')),
+    (0, common_1.Delete)(':spotId'),
+    __param(0, (0, common_1.Param)('eventId')),
+    __param(1, (0, common_1.Param)('spotId')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [String, String]),
     __metadata("design:returntype", void 0)
 ], SpotsController.prototype, "remove", null);
 exports.SpotsController = SpotsController = __decorate([
-    (0, common_1.Controller)('spots'),
+    (0, common_1.Controller)('events/:eventId/spots'),
     __metadata("design:paramtypes", [spots_service_1.SpotsService])
 ], SpotsController);
 //# sourceMappingURL=spots.controller.js.map
