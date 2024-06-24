@@ -13,11 +13,11 @@ exports.EventsService = void 0;
 const prisma_service_1 = require("./../prisma/prisma.service");
 const common_1 = require("@nestjs/common");
 let EventsService = class EventsService {
-    constructor(PrismaService) {
-        this.PrismaService = PrismaService;
+    constructor(prismaService) {
+        this.prismaService = prismaService;
     }
     create(createEventDto) {
-        return this.PrismaService.event.create({
+        return this.prismaService.event.create({
             data: {
                 ...createEventDto,
                 date: new Date(createEventDto.date),
@@ -25,21 +25,21 @@ let EventsService = class EventsService {
         });
     }
     findAll() {
-        return this.PrismaService.event.findMany();
+        return this.prismaService.event.findMany();
     }
     findOne(id) {
-        return this.PrismaService.event.findUnique({
+        return this.prismaService.event.findUnique({
             where: { id },
         });
     }
     update(id, updateEventDto) {
-        return this.PrismaService.event.update({
+        return this.prismaService.event.update({
             data: updateEventDto,
             where: { id },
         });
     }
     remove(id) {
-        return this.PrismaService.event.delete({
+        return this.prismaService.event.delete({
             where: { id },
         });
     }

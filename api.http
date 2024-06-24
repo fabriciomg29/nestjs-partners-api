@@ -32,5 +32,12 @@ DELETE http://localhost:3000/events/{{ eventId }}
 Content-Type: application/json
 
 ###
-GET http://localhost:3000/spots
+GET http://localhost:3000/events/clxqu7rni0000xzk489nuka63/spots
 
+###
+POST http://localhost:3000/events/clxqu7rni0000xzk489nuka63/spots
+Content-Type: application/json
+
+{
+    "name": "A3"
+}

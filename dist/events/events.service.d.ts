@@ -2,8 +2,8 @@ import { PrismaService } from './../prisma/prisma.service';
 import { CreateEventDto } from './dto/create-event.dto';
 import { UpdateEventDto } from './dto/update-event.dto';
 export declare class EventsService {
-    private PrismaService;
-    constructor(PrismaService: PrismaService);
+    private prismaService;
+    constructor(prismaService: PrismaService);
     create(createEventDto: CreateEventDto): import(".prisma/client").Prisma.Prisma__EventClient<{
         id: string;
         name: string;

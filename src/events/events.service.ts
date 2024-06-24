@@ -5,10 +5,10 @@ import { UpdateEventDto } from './dto/update-event.dto';
 
 @Injectable()
 export class EventsService {
-  constructor(private PrismaService: PrismaService) {}
+  constructor(private prismaService: PrismaService) {}
 
   create(createEventDto: CreateEventDto) {
-    return this.PrismaService.event.create({
+    return this.prismaService.event.create({
       data: {
         ...createEventDto,
         date: new Date(createEventDto.date),
@@ -17,24 +17,24 @@ export class EventsService {
   }
 
   findAll() {
-    return this.PrismaService.event.findMany();
+    return this.prismaService.event.findMany();
   }
 
   findOne(id: string) {
-    return this.PrismaService.event.findUnique({
+    return this.prismaService.event.findUnique({
       where: { id },
     });
   }
 
   update(id: string, updateEventDto: UpdateEventDto) {
-    return this.PrismaService.event.update({
+    return this.prismaService.event.update({
       data: updateEventDto,
       where: { id },
     });
   }
 
   remove(id: string) {
-    return this.PrismaService.event.delete({
+    return this.prismaService.event.delete({
       where: { id },
     });
   }

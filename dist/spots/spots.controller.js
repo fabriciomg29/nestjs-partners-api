@@ -22,7 +22,10 @@ let SpotsController = class SpotsController {
         this.spotsService = spotsService;
     }
     create(createSpotDto, eventId) {
-        return this.spotsService.create(createSpotDto);
+        return this.spotsService.create({
+            ...createSpotDto,
+            eventId,
+        });
     }
     findAll(eventId) {
         return this.spotsService.findAll(eventId);

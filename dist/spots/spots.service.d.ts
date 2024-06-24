@@ -4,7 +4,9 @@ import { UpdateSpotDto } from './dto/update-spot.dto';
 export declare class SpotsService {
     private prismaService;
     constructor(prismaService: PrismaService);
-    create(createSpotDto: CreateSpotDto): import(".prisma/client").Prisma.Prisma__SpotClient<{
+    create(createSpotDto: CreateSpotDto & {
+        eventId: string;
+    }): import(".prisma/client").Prisma.Prisma__SpotClient<{
         id: string;
         name: string;
         status: import(".prisma/client").$Enums.SpotStatus;

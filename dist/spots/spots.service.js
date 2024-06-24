@@ -12,14 +12,22 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.SpotsService = void 0;
 const prisma_service_1 = require("./../prisma/prisma.service");
 const common_1 = require("@nestjs/common");
+const client_1 = require("@prisma/client");
 let SpotsService = class SpotsService {
     constructor(prismaService) {
         this.prismaService = prismaService;
     }
     create(createSpotDto) {
+        const event = this.prismaService.event.findFirst({
+            where: { id: createSpotDto.eventId },
+        });
+        if (!event) {
+            throw new Error('Event not found');
+        }
         return this.prismaService.spot.create({
             data: {
                 ...createSpotDto,
+                status: client_1.SpotStatus.available,
             },
         });
     }
